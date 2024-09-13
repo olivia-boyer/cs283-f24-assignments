@@ -1,0 +1,67 @@
+﻿using System;
+using System.Drawing;
+using System.Windows.Forms;
+/* Class defining the obstacle boxes.
+ * 
+ * This class defines the appearance and beharvior
+ * of the game's obstacles.
+ * 
+ * @author: Olivia Boyer
+ * @Version: September 9, 2024
+ */
+public class Obstacles
+{
+	private int _xpos;
+	private int _ypos;
+    private static Random _rnd = new Random(); 
+	private int _speed = _rnd.Next(40, 80); 
+	Image _box = Image.FromFile("image1.png");
+
+    public Obstacles()
+	{
+
+		GenerateHeight();
+		_xpos = 640;
+	}
+	public void Update(float dt)
+	{
+		if (_xpos > -50)
+		{
+			_xpos -= _speed;
+		}
+		else
+		{
+			_xpos = StartDistance();
+			GenerateHeight();
+		}
+		}
+
+	public void Draw(Graphics g)
+	{
+		Pen _pen = new Pen(Color.Black, 3);
+		g.DrawImage(_box,Area());
+	}
+
+	private void GenerateHeight()
+	{
+    _ypos = 60 * _rnd.Next(4, 6);
+    }
+
+	public Rectangle Area()
+	{
+		Rectangle rect = new Rectangle(_xpos, _ypos, 50, 50);
+		return rect;
+	}
+
+	private int StartDistance()
+	{
+		
+		return 640 + _rnd.Next(-20,20);
+	}
+	
+	public void StartOver()
+	{
+		_xpos = 640;
+	}
+}
+
