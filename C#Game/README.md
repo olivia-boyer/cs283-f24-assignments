@@ -1,5 +1,5 @@
 # Your README for A2 HERE
-
+https://github.com/olivia-boyer/cs283-f24-assignments/blob/main/C%23Game/egggame.mp4
 (it is egg themed because I used an ellipse as a placeholder for the player and eggs are a similar shape.
 Also, eggs are easy to draw.)
 
