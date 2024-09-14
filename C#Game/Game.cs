@@ -64,7 +64,7 @@ public class Game
 
             }
            
-        }
+    }
     /*checks to see if obstacle hits player*/
     public Boolean Collision()
     {
@@ -79,19 +79,19 @@ public class Game
 
     /*resets game if clicked after game over*/
     public void MouseClick(MouseEventArgs mouse)
+    {
+        if (mouse.Button == MouseButtons.Left)
         {
-            if (mouse.Button == MouseButtons.Left)
+            if (_gameover)
             {
-                if (_gameover)
-                {
-                    _gameover = false;
-                }
+                _gameover = false;
             }
         }
+    }
 
     /*Draws the credit box*/
-        public void DrawCredits(Graphics g)
-        {
+    public void DrawCredits(Graphics g)
+    {
         SolidBrush brush = new SolidBrush(Color.Black);
         SolidBrush white = new SolidBrush(Color.White);
         Font drawFont = new Font("Arial", 16);
@@ -99,8 +99,8 @@ public class Game
         g.DrawString("Olivia Boyer \n 2027 \n Egg Escape", drawFont, white, 20, 400);
     }
 
-        public void KeyDown(KeyEventArgs key)
-        {
+    public void KeyDown(KeyEventArgs key)
+    {
             if (key.KeyCode == Keys.D || key.KeyCode == Keys.Right)
             {
             }
@@ -119,6 +119,6 @@ public class Game
             {
                 _credits = !_credits;
             }
-        }
     }
+}
 
