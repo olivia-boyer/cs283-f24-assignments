@@ -98,7 +98,7 @@ public class Game
         g.FillRectangle(brush, 10, 380, 200, 100);
         g.DrawString("Olivia Boyer \n 2027 \n Egg Escape", drawFont, white, 20, 400);
     }
-
+    /*determines how player reacts to keys being pressed*/
     public void KeyDown(KeyEventArgs key)
     {
             if (key.KeyCode == Keys.D || key.KeyCode == Keys.Right)
