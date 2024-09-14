@@ -4,7 +4,7 @@ using System.Security.Principal;
 using System.Windows.Forms;
 /* Class defining the obstacle boxes.
  * 
- * This class defines the appearance and beharvior
+ * This class defines the appearance and behavior
  * of the game's obstacles.
  * 
  * @author: Olivia Boyer
@@ -14,12 +14,14 @@ public class Obstacles
 {
 	private int _xpos;
 	private int _ypos;
-    private static Random _rnd = new Random(); 
-	private int _speed = _rnd.Next(40, 80); //speed varies randomly
+    private Random _rnd;
+	private int _speed;
 	Image _box = Image.FromFile("image1.png");
-
+	
     public Obstacles()
 	{
+        _rnd = new Random();
+        _speed = _rnd.Next(40, 80); //speed varies randomly
 		GenerateHeight();
 		_xpos = Window.width;
 	}
@@ -29,14 +31,14 @@ public class Obstacles
 	{
 		if (_xpos > -50)
 		{
-			_xpos -= _speed;
-		}
-		else
-		{
-			_xpos = StartDistance();
-			GenerateHeight();
-		}
-		}
+				_xpos -= _speed;
+			}
+			else
+			{
+			StartOver();
+			}
+	}
+		
 
 	//called once per frame, draws obstacle in updated position
 	public void Draw(Graphics g)
@@ -65,14 +67,17 @@ public class Obstacles
 	//gives slight variation in how quickly obstacle comes on screen
 	private int StartDistance()
 	{
-		
-		return Window.width + _rnd.Next(-20,20);
+		return Window.width+ _rnd.Next(-20,20);
 	}
 	
 	//resets obstacle position
 	public void StartOver()
 	{
 		_xpos = Window.width;
-	}
+		GenerateHeight();
+        _speed = _rnd.Next(40, 80);
+    }
+
+	
 }
 
