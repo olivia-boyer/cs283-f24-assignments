@@ -7,7 +7,7 @@ using System.Windows.Forms;
  * 
  * Implements the game loop and end conditions.
  * 
- * edited from base code.
+ * modified from base code.
  */
 public class Game
 {
@@ -15,11 +15,14 @@ public class Game
     Obstacles _obstacles = new Obstacles();
     Boolean _gameover;
     private Boolean _credits;
+   
+    //called at beginning of game, shows credits
     public void Setup()
     {
         _credits = true;
     }
 
+    //called once per game, updates game objects and checks for collision
     public void Update(float dt)
     {
         _player.Update(dt);
@@ -30,11 +33,13 @@ public class Game
         }
     }
 
+    /*called once per frame after update, draws credits, background
+    and game over screen*/
     public void Draw(Graphics g)
     {
         Color background = ColorTranslator.FromHtml("#606060");
         Brush brush = new SolidBrush(background); //sample code reference
-        g.FillRectangle(brush, 0, 0, 640, 480);
+        g.FillRectangle(brush, 0, 0,Window.width, Window.height);
         if (_credits)
         {
         DrawCredits(g);
@@ -43,7 +48,7 @@ public class Game
         if (!_gameover)
             {
                 Pen _pen = new Pen(Color.Black, 3);
-                g.DrawLine(_pen, 0, 351, 641, 351);
+                g.DrawLine(_pen, 0, 351, Window.width, 351);
                 _player.Draw(g);
                 _obstacles.Draw(g);
 
@@ -54,13 +59,13 @@ public class Game
                 StringFormat format = new StringFormat();  //assignment example code
                 format.LineAlignment = StringAlignment.Center;
                 format.Alignment = StringAlignment.Center;
-                g.DrawString("Game Over \n click to restart", drawFont, drawBrush, 320, 240, format);
+                g.DrawString("Game Over \n click to restart", drawFont, drawBrush, Window.width/2, Window.height/2, format);
             _obstacles.StartOver();
 
             }
            
         }
-
+    /*checks to see if obstacle hits player*/
     public Boolean Collision()
     {
         if (_player.CreateCharacter().IntersectsWith(_obstacles.Area()))
@@ -72,12 +77,11 @@ public class Game
         }
     }
 
-
+    /*resets game if clicked after game over*/
     public void MouseClick(MouseEventArgs mouse)
         {
             if (mouse.Button == MouseButtons.Left)
             {
-                System.Console.WriteLine(mouse.Location.X + ", " + mouse.Location.Y);
                 if (_gameover)
                 {
                     _gameover = false;
@@ -85,6 +89,7 @@ public class Game
             }
         }
 
+    /*Draws the credit box*/
         public void DrawCredits(Graphics g)
         {
         SolidBrush brush = new SolidBrush(Color.Black);

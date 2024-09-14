@@ -19,11 +19,13 @@ public class Player
 	Image _egg = Image.FromFile("image0.png");
 	Image _slide = Image.FromFile("egg2.png");
     
+	//initializes player
     public Player(int x, int y) {
 		_xvalue = x;
 		_yvalue = y;
 	}
 
+	//called every frame
 	public void Update(float dt)
 	{
      if (_jumping)
@@ -32,6 +34,7 @@ public class Player
 		}
 	}
 
+	//Draws the player character each frame
 	public void Draw(Graphics g)
 	{
 		if (_ducking < 5 && _yvalue == 280)
@@ -44,7 +47,7 @@ public class Player
 		}
 		
 	}
-
+	//determines size of character depending on if ducking
 	public Rectangle CreateCharacter()
 	{
 		if (_ducking < 5 && _yvalue == 280)
@@ -59,6 +62,7 @@ public class Player
 		}
 		}
 
+	//makes the player jump
 	public void Jump()
 	{
 		if (_yvalue == 190) 
@@ -92,12 +96,13 @@ public class Player
 		}
 	}
 
+	//tells the player to begin the jump
 	public void StartJump()
 	{
 		_jumping = true;
 	}
 
-
+	//resets the ducking variable to zero, making the player duck
 	public void Duck()
 	{
 		_ducking = 0;
