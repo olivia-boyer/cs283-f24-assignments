@@ -2047,7 +2047,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6589838161899413632}
-  - component: {fileID: 4211423705720281719}
   m_Layer: 0
   m_Name: root
   m_TagString: Untagged
@@ -2071,20 +2070,6 @@ Transform:
   - {fileID: 8716385944805298253}
   m_Father: {fileID: 7019920669011962644}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &4211423705720281719
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6801356123756424196}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 31236916dd8e4804aa16ecc2995d5cd9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  moveSpeed: 10
-  rotationSpeed: 10
 --- !u!1 &7140817438574657331
 GameObject:
   m_ObjectHideFlags: 0
@@ -2537,6 +2522,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4335547403262319921}
   - component: {fileID: 599704594509455299}
+  - component: {fileID: 740653126386990412}
   m_Layer: 0
   m_Name: Body10
   m_TagString: Untagged
@@ -2655,6 +2641,28 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.00000008940697, y: -0.005318947, z: 0.37081006}
     m_Extent: {x: 0.74687564, y: 0.24742022, z: 0.3893995}
   m_DirtyAABB: 0
+--- !u!64 &740653126386990412
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8618548934383607741}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4529524283109666172, guid: 14ab85c74a636c74baa3ae08a1b410bc, type: 3}
 --- !u!1 &8829116445706251742
 GameObject:
   m_ObjectHideFlags: 0
