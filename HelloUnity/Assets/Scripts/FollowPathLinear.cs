@@ -5,8 +5,8 @@ using UnityEngine;
 public class FollowPathLinear : MonoBehaviour
 {
     private Transform[] stops;
-    public float speed;
-    private int currentStop;
+    //public float speed;
+    private int currentStop;//index of location traveling to in array
     private Transform start;
     private Transform end;
     public float duration = 3.0F;
@@ -25,18 +25,19 @@ public class FollowPathLinear : MonoBehaviour
         start = this.transform;
         end = stops[0];
         currentStop = 0;
-        StartCoroutine(DoLerp());
+       //StartCoroutine(DoLerp());
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKey(KeyCode.Space))  //Need to fix this lol
+        if (Input.GetKeyDown(KeyCode.Space))  
         {
             if (currentStop >= stops.Length)
             {
                 currentStop = 0;
                 timer = 0;
+                start = this.transform;
                 end = stops[0];
             }
             StartCoroutine(DoLerp());
