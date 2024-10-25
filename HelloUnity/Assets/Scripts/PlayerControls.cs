@@ -5,29 +5,38 @@ using UnityEngine;
 public class PlayerControls: MonoBehaviour { 
     public float moveSpeed;
     public float rotationSpeed;
+    public CharacterController controller;
+    private Vector3 playerVelocity;
+    private bool groundedPlayer;
+    public float jumpHeight;
+    private float gravity = -9.81f;
 
     void Start()
     {
-        
+
     }
 
     void Update()
     {
-        if (Input.GetKey(KeyCode.W))
+        groundedPlayer = controller.isGrounded;     //all the jump stuff is just directly from the Unity Api
+        if (groundedPlayer && playerVelocity.y < 0)
         {
-            transform.Translate(0, 0, moveSpeed/10);
+            playerVelocity.y = 0f;
         }
-        else if (Input.GetKey(KeyCode.S))
+        //Debug.Log(groundedPlayer);
+
+        Vector3 move = Input.GetAxis("Vertical") * this.transform.forward;
+        controller.Move(move * Time.deltaTime * moveSpeed);
+
+
+        transform.Rotate(0, Input.GetAxis("Horizontal") * rotationSpeed/10, 0);
+
+        if (Input.GetKeyDown("space") && groundedPlayer)
         {
-            transform.Translate(0, 0, -moveSpeed/10);
+            playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);
         }
-        if (Input.GetKey(KeyCode.D))
-        {
-            transform.Rotate(0, rotationSpeed/10,0 );
-        }
-        else if (Input.GetKey(KeyCode.A))
-        {
-            transform.Rotate(0, -rotationSpeed/10, 0);
-        }
+
+        playerVelocity.y += 5 * gravity * Time.deltaTime;  
+        controller.Move(playerVelocity * Time.deltaTime);
     }
 }
