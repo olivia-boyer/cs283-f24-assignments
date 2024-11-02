@@ -19,7 +19,7 @@ public class GazeController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 r = target.position - pointer.parent.position;
+     /*   Vector3 r = target.position - pointer.parent.position;
         Vector3 e = target.position - pointer.position;
         axis = Vector3.Cross(r, e) / Vector3.Magnitude(Vector3.Cross(r, e));
         angle = Mathf.Rad2Deg*Mathf.Atan2(Vector3.Magnitude(Vector3.Cross(r, e)), Vector3.Dot(r, r) + Vector3.Dot(r, e));
@@ -27,7 +27,8 @@ public class GazeController : MonoBehaviour
         Quaternion fix = new Quaternion(90, -90, 0, 1);
         temp = fix * temp;
         pointer.parent.rotation = temp;*/
-      pointer.parent.rotation = pointer.parent.rotation * Quaternion.AngleAxis(angle, axis);
+      /*pointer.parent.rotation = pointer.parent.rotation * Quaternion.AngleAxis(angle, axis);
         Debug.DrawLine(target.position, pointer.parent.position, Color.red);
+        */
     }
 }

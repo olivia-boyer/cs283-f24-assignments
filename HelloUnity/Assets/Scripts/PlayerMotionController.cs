@@ -31,6 +31,6 @@ public class PlayerMotionController : MonoBehaviour
         {
             animator.SetBool("jumping", true);
         }
-        Debug.Log(animator.GetBool("jumping"));
+       // Debug.Log(animator.GetBool("jumping"));
     }
 }
