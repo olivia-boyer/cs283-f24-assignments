@@ -43,7 +43,7 @@ public class BehaviorMinion : MonoBehaviour
         rootNode.Tick();
     }
 
-    //need conditional to see if player in view radius
+    
     IEnumerator<BTState> Attack()
     {
         

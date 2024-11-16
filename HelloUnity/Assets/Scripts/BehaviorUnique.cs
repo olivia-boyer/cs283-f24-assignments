@@ -47,7 +47,7 @@ public class BehaviorUnique : MonoBehaviour
         rootNode.Tick();
     }
 
-    IEnumerator<BTState> Attack()
+    IEnumerator<BTState> Attack() //checks for nearby enemies, approaches them, and plays attack animation
     {
         Transform enemyLoc;
         if (EnemyInRange(out enemyLoc) &&
@@ -72,7 +72,7 @@ public class BehaviorUnique : MonoBehaviour
 
 
 
-    IEnumerator<BTState> Follow()
+    IEnumerator<BTState> Follow() //follows player character
     {
        Vector3 personalSpace = new Vector3(atkRad - 2, 0, atkRad - 2);
        if (Vector3.Distance(transform.position, target.position) >= atkRad)
@@ -88,7 +88,7 @@ public class BehaviorUnique : MonoBehaviour
 
 
 
-    IEnumerator<BTState> Wander()
+    IEnumerator<BTState> Wander() //wanders around safe area before being approached
     {
         NavMeshAgent agent = GetComponent<NavMeshAgent>();
         Vector3 dest;
@@ -106,7 +106,7 @@ public class BehaviorUnique : MonoBehaviour
 
 
 
-    IEnumerator Activate()
+    IEnumerator Activate() //checks if player character has approached
     {
         while (!activated)
         {
@@ -120,7 +120,7 @@ public class BehaviorUnique : MonoBehaviour
 
     }
 
-    bool RandomPoint(Vector3 center, float range, out Vector3 result)
+    bool RandomPoint(Vector3 center, float range, out Vector3 result) 
     {
         for (int i = 0; i < 30; i++)
         {
