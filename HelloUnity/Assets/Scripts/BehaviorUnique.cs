@@ -17,6 +17,7 @@ public class BehaviorUnique : MonoBehaviour
     public Transform wanderOrigin;
     private NavMeshAgent agent;
     private GameObject[] enemies;
+    public float range;
     
     // Start is called before the first frame update
     void Start()
@@ -95,7 +96,7 @@ public class BehaviorUnique : MonoBehaviour
         if (agent.remainingDistance < 1.0f)
         {
             if (RandomPoint(
-               wanderOrigin.position, wanderOrigin.localScale.x, out dest))
+               wanderOrigin.position, range, out dest))
             {
                 agent.SetDestination(dest);
             }
@@ -120,11 +121,11 @@ public class BehaviorUnique : MonoBehaviour
 
     }
 
-    bool RandomPoint(Vector3 center, float range, out Vector3 result) 
+    bool RandomPoint(Vector3 center, float radius, out Vector3 result) 
     {
         for (int i = 0; i < 30; i++)
         {
-            Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * range;
+            Vector3 randomPoint = center + UnityEngine.Random.insideUnitSphere * radius;
             NavMeshHit hit;
             if (NavMesh.SamplePosition(randomPoint, out hit, 1.0f, NavMesh.AllAreas))
             {

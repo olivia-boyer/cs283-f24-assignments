@@ -50,6 +50,7 @@ public class BehaviorMinion : MonoBehaviour
         if (Vector3.Distance(this.transform.position,target.position) <= atkRad)
         {
             agent.ResetPath();
+            transform.LookAt(target, Vector3.up);
             anim.SetBool("attacking", true);
             Debug.Log("Attacking");
             Debug.Log(Vector3.Distance(this.transform.position, target.position).ToString());
